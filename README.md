@@ -6,3 +6,4 @@ Library Used
 -pyautogui
 -time
 -webbrowers
+-discordwebhook
