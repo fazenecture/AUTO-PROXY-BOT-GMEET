@@ -10,6 +10,13 @@ import pyautogui
 #for all the display and cursor actions
 from datetime import datetime
 #for the local time
+from discord_webhook import webhook
+import discord_webhook
+from discord_webhooks import DiscordWebhooks
+
+hook_url = "Enter your discord_webhook_url"
+webhook = DiscordWebhooks(hook_url)
+
 
 classtime = input("Enter your Class Time : ")
 #Taking Class Time
@@ -32,6 +39,11 @@ while True:
         time.sleep(1)
         pyautogui.click(x=1272, y=574, button='left', clicks=1)
         time.sleep(5)
+        print("Class Joined")
+
+        webhook.set_content(title="CLASS JOINED SUCCESSFULLY at "+ local)
+        webhook.send()
+
         pyautogui.hotkey('ctrl', 'alt','c')
         time.sleep(3)
         pyautogui.write("Present")
@@ -44,6 +56,9 @@ while True:
      if local == endtime:
         time.sleep(3)
         pyautogui.hotkey('ctrl','w')
+        print("CLASS LEFT")
+        webhook.set_content(title="CLASS LEFT at " + local)
+        webhook.send()
         break
 
 
